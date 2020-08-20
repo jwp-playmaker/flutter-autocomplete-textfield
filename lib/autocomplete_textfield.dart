@@ -319,20 +319,17 @@ class AutoCompleteTextFieldState<T> extends State<AutoCompleteTextField> {
                               child: new InkWell(
                                   child: itemBuilder(context, suggestion),
                                   onTap: () {
-                                    setState(() {
                                       if (submitOnSuggestionTap) {
-                                        String newText = suggestion.toString();
-                                        textField.controller.text = newText;
-                                        textField.focusNode.unfocus();
-                                        itemSubmitted(suggestion);
-                                        if (clearOnSubmit) {
-                                          clear();
-                                        }
-                                      } else {
-                                        String newText = suggestion.toString();
-                                        textField.controller.text = newText;
+                                        setState(() {
+                                            String newText = suggestion.toString();
+                                            textField.controller.text = newText;
+                                            textField.focusNode.unfocus();
+                                            itemSubmitted(suggestion);
+                                            if (clearOnSubmit) {
+                                              clear();
+                                            }
+                                        });
                                       }
-                                    });
                                   }))
                         ]);
                       }).toList(),
