@@ -328,6 +328,9 @@ class AutoCompleteTextFieldState<T> extends State<AutoCompleteTextField> {
                                         if (clearOnSubmit) {
                                           clear();
                                         }
+                                      } else {
+                                        String newText = suggestion.toString();
+                                        textField.controller.text = newText;
                                       }
                                     });
                                   }))
